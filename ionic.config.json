@@ -1,0 +1,7 @@
+{
+  "name": "wordCounter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
