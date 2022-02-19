@@ -1,36 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
+    <ion-title color="iprimary">
       CuentaPalabras
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form #f="ngForm" (ngSubmit)="countWords()"  >
-      
-      <ion-textarea 
-          [(ngModel)]="text" 
-          name="text2Count" 
-          required 
-          placeholder="Escribe tu texto...">
-      </ion-textarea>
-      
-      <ion-button type="submit" expand="block" fill="clear" shape="round">
-        Contar
-      </ion-button>
-      <ion-button (click)="clean()" expand="block" fill="clear" shape="round">
-        Borrar
-      </ion-button>
+  <form #f="ngForm" (ngSubmit)="countWords()">
+
+    <ion-textarea [(ngModel)]="text" name="text2Count" required placeholder="Escribe tu texto...">
+    </ion-textarea>
+
+    <ion-button type="submit" expand="block" fill="clear" shape="round" [disabled]="!f.valid">
+      Contar
+    </ion-button>
+    <ion-button (click)="clean()" expand="block" fill="clear" shape="round" [disabled]="!f.valid">
+      Borrar
+    </ion-button>
 
   </form>
 
-  <ion-list *ngIf="result.length>0">
+  <ion-list *ngIf="result.length>0" lines="none">
     <ion-item *ngFor="let r of result">
       <ion-label>{{r.word}} - {{r.counter}}</ion-label>
     </ion-item>
     <ion-item>
-      TOTAL: {{numWords}}
+      <ion-label color="primary"><strong>TOTAL:</strong> {{numWords}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
