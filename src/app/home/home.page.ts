@@ -29,12 +29,15 @@ export class HomePage {
     this.numWords = words.length;
     
     words.forEach( (word) => {
-      let arr2 = words.filter(element => element === word).length;
+      
+      
 
-      if(!this.result.find(element => element.word === word)){
+      let arr2 = words.filter(element => element.toLowerCase() === word.toLowerCase() ).length;
+
+      if(!this.result.find(element => element.word.toLowerCase()  === word.toLowerCase())){
         this.result.push(
           {
-            word: word, 
+            word: word.toLowerCase() , 
             counter: arr2
           }
         )
